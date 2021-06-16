@@ -12,7 +12,7 @@ public class Car {
     @Column(name = "description")
     private String desc;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "user")
+    @JoinColumn(name = "users")
     private User user;
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "markAuto")
