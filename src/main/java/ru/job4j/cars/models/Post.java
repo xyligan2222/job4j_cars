@@ -21,6 +21,19 @@ public class Post {
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "photoId")
     private PhotoCar photoCar;
+    @Column(name = "cost")
+    private String cost;
+    @Column(name = "run")
+    private String run;
+
+    public Post(String desc, Date created, Car car, PhotoCar photoCar, String cost, String run) {
+        this.desc = desc;
+        this.created = created;
+        this.car = car;
+        this.photoCar = photoCar;
+        this.cost = cost;
+        this.run = run;
+    }
 
     public Post(){
     }
@@ -65,8 +78,8 @@ public class Post {
         return created;
     }
 
-    public void setCreated(Date creared) {
-        this.created = creared;
+    public void setCreated(Date created) {
+        this.created = created;
     }
 
     public Car getCar() {
@@ -85,17 +98,33 @@ public class Post {
         this.photoCar = photoCar;
     }
 
+    public String getCost() {
+        return cost;
+    }
+
+    public void setCost(String cost) {
+        this.cost = cost;
+    }
+
+    public String getRun() {
+        return run;
+    }
+
+    public void setRun(String run) {
+        this.run = run;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Post post = (Post) o;
-        return Objects.equals(id, post.id) && Objects.equals(desc, post.desc) && Objects.equals(created, post.created) && Objects.equals(car, post.car) && Objects.equals(photoCar, post.photoCar);
+        return Objects.equals(id, post.id) && Objects.equals(desc, post.desc) && Objects.equals(created, post.created) && Objects.equals(car, post.car) && Objects.equals(photoCar, post.photoCar) && Objects.equals(cost, post.cost) && Objects.equals(run, post.run);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, desc, created, car, photoCar);
+        return Objects.hash(id, desc, created, car, photoCar, cost, run);
     }
 
     @Override
@@ -103,7 +132,9 @@ public class Post {
         return "\nPost{" +
                 "id=" + id +
                 ", desc='" + desc + '\'' +
-                ", creared=" + created +
+                ", created=" + created +
+                ", cost='" + cost + '\'' +
+                ", run='" + run + '\'' +
                 '}';
     }
 }
